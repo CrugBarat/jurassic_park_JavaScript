@@ -30,12 +30,17 @@ Park.prototype.findDinoBySpecies = function (species) {
   return resultArray;
 };
 
-Park.prototype.totalNumberOfVisitors = function () {
+Park.prototype.totalNumberOfVisitorsPerDay = function () {
   let totalNumberOfVisitors = 0;
   for (dino of this.dinoCollection) {
-    totalNumberOfVisitors += dino.guestsAttractedPerDay
+    totalNumberOfVisitors += dino.guestsAttractedPerDay;
   };
   return totalNumberOfVisitors;
+};
+
+Park.prototype.totalNumberOfVisitorsPerYear = function () {
+  let result = (this.totalNumberOfVisitorsPerDay() * 365);
+  return result
 };
 
 module.exports = Park;
