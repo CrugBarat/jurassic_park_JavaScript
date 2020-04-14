@@ -40,7 +40,44 @@ Park.prototype.totalNumberOfVisitorsPerDay = function () {
 
 Park.prototype.totalNumberOfVisitorsPerYear = function () {
   let result = (this.totalNumberOfVisitorsPerDay() * 365);
-  return result
+  return result;
+};
+
+Park.prototype.yearlyTicketSales = function () {
+  let result = (this.totalNumberOfVisitorsPerYear() * this.ticketPrice);
+  return result;
+};
+
+Park.prototype.removeDinoBySpecies = function (species) {
+  for (dino of this.findDinoBySpecies(species)) {
+      this.removeDino(dino);
+    };
+};
+
+Park.prototype.findDinoByDiet = function (diet) {
+  let resultArray = [];
+  for (dino of this.dinoCollection) {
+    if (dino.diet === diet) {
+      resultArray.push(dino);
+    };
+  };
+  return resultArray;
+};
+
+Park.prototype.findDiets = function () {
+  let resultArray = [];
+  for (dino of this.dinoCollection) {
+    resultArray.push(dino.diet);
+  };
+  return resultArray;
+};
+
+Park.prototype.dietDataObject = function () {
+ let dietDataObject = {};
+  for (diet of this.findDiets()) {
+    dietDataObject[diet] = this.findDinoByDiet(diet).length;
+  };
+  return dietDataObject;
 };
 
 module.exports = Park;
