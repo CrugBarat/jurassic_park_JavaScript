@@ -7,12 +7,14 @@ describe('Park', function() {
   let dino1;
   let dino2;
   let dino3;
+  let dino4;
   let park;
 
   beforeEach(function () {
     dino1 = new Dinosaur('T-Rex', 'carnivore', 75);
     dino2 = new Dinosaur('Diplo', 'herbivore', 50);
     dino3 = new Dinosaur('Stega', 'herbivore', 40);
+    dino4 = new Dinosaur('T-Rex', 'carnivore', 75);
     park = new Park('Jurassic Park', 15.00);
     park.dinoCollection = [dino1, dino2]
   })
@@ -52,9 +54,16 @@ describe('Park', function() {
     assert.deepStrictEqual(actual, dino1)
   });
 
-  it('should be able to find all dinosaurs of a particular species');
+  it('should be able to find all dinosaurs of a particular species', function () {
+    park.addDino(dino4)
+    const actual = park.findDinoBySpecies('T-Rex');
+    assert.deepStrictEqual(actual, [dino1, dino4]);
+  });
 
-  it('should be able to calculate the total number of visitors per day');
+  it('should be able to calculate the total number of visitors per day', function () {
+    const actual = park.totalNumberOfVisitors();
+    assert.equal(actual, 125)
+  });
 
   it('should be able to calculate the total number of visitors per year');
 
