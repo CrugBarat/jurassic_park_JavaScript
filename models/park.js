@@ -15,4 +15,9 @@ Park.prototype.removeDino = function(dinosaur) {
   };
 };
 
+Park.prototype.dinoMostVisitors = function() {
+  let result = this.dinoCollection.sort((a, b) => b.guestsAttractedPerDay - a.guestsAttractedPerDay)
+  return result[0]
+};
+
 module.exports = Park;
