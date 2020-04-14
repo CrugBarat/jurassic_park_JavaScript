@@ -15,9 +15,20 @@ Park.prototype.removeDino = function (dinosaur) {
   };
 };
 
-Park.prototype.dinoMostVisitors = function () {
+Park.prototype.sortsByMostVisitors = function () {
   let result = this.dinoCollection.sort((a, b) => b.guestsAttractedPerDay - a.guestsAttractedPerDay);
-  return result[0];
+  return result;
+};
+
+Park.prototype.dinoMostVisitors = function () {
+  let resultArray = [];
+  let sortedDinos = this.sortsByMostVisitors();
+  for (dino of sortedDinos) {
+    if (dino.guestsAttractedPerDay === sortedDinos[0].guestsAttractedPerDay) {
+      resultArray.push(dino)
+    };
+  };
+  return resultArray
 };
 
 Park.prototype.findDinoBySpecies = function (species) {
@@ -50,8 +61,8 @@ Park.prototype.yearlyTicketSales = function () {
 
 Park.prototype.removeDinoBySpecies = function (species) {
   for (dino of this.findDinoBySpecies(species)) {
-      this.removeDino(dino);
-    };
+    this.removeDino(dino);
+  };
 };
 
 Park.prototype.findDinoByDiet = function (diet) {
@@ -73,7 +84,7 @@ Park.prototype.findDiets = function () {
 };
 
 Park.prototype.dietDataObject = function () {
- let dietDataObject = {};
+  let dietDataObject = {};
   for (diet of this.findDiets()) {
     dietDataObject[diet] = this.findDinoByDiet(diet).length;
   };

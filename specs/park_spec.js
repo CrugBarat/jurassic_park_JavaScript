@@ -41,8 +41,16 @@ describe('Park', function() {
     assert.deepStrictEqual(park.dinoCollection, [dino2]);
   });
 
+  it('should be able to sort by the most visitors', function () {
+    park.addDino(dino3);
+    park.addDino(dino4);
+    assert.deepStrictEqual(park.sortsByMostVisitors(), [dino1, dino4, dino2, dino3]);
+  });
+
   it('should be able to find the dinosaur that attracts the most visitors', function () {
-    assert.deepStrictEqual(park.dinoMostVisitors(), dino1);
+    park.addDino(dino3);
+    park.addDino(dino4);
+    assert.deepStrictEqual(park.dinoMostVisitors(), [dino1, dino4]);
   });
 
   it('should be able to find all dinosaurs of a particular species', function () {
