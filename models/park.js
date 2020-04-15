@@ -5,7 +5,7 @@ const Park = function (name, ticketPrice) {
 }
 
 Park.prototype.greeting = function () {
-  return 'Welcome..... to Jurassic Park!';
+  return `Welcome..... to ${this.name}!`;
 }
 
 Park.prototype.addDino = function (dinosaur) {
