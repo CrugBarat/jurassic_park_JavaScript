@@ -33,33 +33,39 @@ describe('Park', function() {
 
   it('should have a collection of dinosaurs', function () {
     assert.deepStrictEqual(park.dinoCollection, [dino1, dino2]);
+    assert.equal(park.dinoCollection.length, 2);
   });
 
   it('should be able to add a dinosaur to its collection', function () {
     park.addDino(dino3);
     assert.deepStrictEqual(park.dinoCollection, [dino1, dino2, dino3]);
+    assert.equal(park.dinoCollection.length, 3);
   });
 
   it('should be able to remove a dinosaur from its collection', function () {
     park.removeDino(dino1);
     assert.deepStrictEqual(park.dinoCollection, [dino2]);
+    assert.equal(park.dinoCollection.length, 1);
   });
 
   it('should be able to sort by the most visitors', function () {
     park.addDino(dino3);
     park.addDino(dino4);
     assert.deepStrictEqual(park.sortsByMostVisitors(), [dino1, dino4, dino2, dino3]);
+    assert.equal(park.sortsByMostVisitors().length, 4);
   });
 
   it('should be able to find the dinosaur that attracts the most visitors', function () {
     park.addDino(dino3);
     park.addDino(dino4);
     assert.deepStrictEqual(park.dinoMostVisitors(), [dino1, dino4]);
+    assert.equal(park.dinoMostVisitors().length, 2);
   });
 
   it('should be able to find all dinosaurs of a particular species', function () {
     park.addDino(dino4);
     assert.deepStrictEqual(park.findDinoBySpecies('T-Rex'), [dino1, dino4]);
+    assert.equal(park.findDinoBySpecies('T-Rex').length, 2);
   });
 
   it('should be able to calculate the total number of visitors per day', function () {
@@ -77,16 +83,19 @@ describe('Park', function() {
   it('should be able to remove all dinosaurs of particular species', function () {
     park.addDino(dino4);
     park.removeDinoBySpecies('T-Rex');
-    assert.deepStrictEqual(park.dinoCollection, [dino2])
+    assert.deepStrictEqual(park.dinoCollection, [dino2]);
+    assert.equal(park.dinoCollection.length, 1);
   });
 
   it('should be able to find all dinosaurs of a particular diet', function () {
     park.addDino(dino3);
-    assert.deepStrictEqual(park.findDinoByDiet('herbivore'), [dino2, dino3])
+    assert.deepStrictEqual(park.findDinoByDiet('herbivore'), [dino2, dino3]);
+    assert.equal(park.findDinoByDiet('herbivore').length, 2);
   });
 
   it('should be able to find all diets', function () {
-    assert.deepStrictEqual(park.findDiets(), ['carnivore', 'herbivore'])
+    assert.deepStrictEqual(park.findDiets(), ['carnivore', 'herbivore']);
+    assert.equal(park.findDiets().length, 2);
   });
 
   it('should be able to return an object with diet and number of diets', function () {
