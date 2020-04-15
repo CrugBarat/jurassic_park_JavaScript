@@ -4,6 +4,10 @@ const Park = function (name, ticketPrice) {
   this.dinoCollection = [];
 }
 
+Park.prototype.greeting = function () {
+  return 'Welcome..... to Jurassic Park!';
+}
+
 Park.prototype.addDino = function (dinosaur) {
   this.dinoCollection.push(dinosaur);
 }

@@ -19,6 +19,10 @@ describe('Park', function() {
     park.dinoCollection = [dino1, dino2];
   });
 
+  it('should be able to return a greeting', function () {
+    assert.strictEqual(park.greeting(), 'Welcome..... to Jurassic Park!');
+  });
+
   it('should have a name', function () {
     assert.equal(park.name, 'Jurassic Park');
   });
