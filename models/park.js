@@ -25,7 +25,7 @@ Park.prototype.sortsByMostVisitors = function () {
 }
 
 Park.prototype.dinoMostVisitors = function () {
-  let resultArray = [];
+  const resultArray = [];
   const sortedDinos = this.sortsByMostVisitors();
   for (dino of sortedDinos) {
     if (dino.guestsAttractedPerDay === sortedDinos[0].guestsAttractedPerDay) {
@@ -35,8 +35,28 @@ Park.prototype.dinoMostVisitors = function () {
   return resultArray
 }
 
+
+//aleternative to find the dinosaur that attracts the most visitors
+//
+// Park.prototype.mvpDinos = function() {
+//   let most_visits = 0;
+//   const mvpDinos = [];
+//   for (let dino of this.dinosaurs){
+//     if (dino.guestsAttractedPerDay > most_visits){
+//       mvpDinos = [dino];
+//       most_visits = dino.guestsAttractedPerDay;
+//     }else if (dino.guestsAttractedPerDay === most_visits) {
+//       mvpDinos.push(dino);
+//     }else{
+//       continue;
+//     }
+//   }
+//   return mvpDinos;
+// };
+
+
 Park.prototype.findDinoBySpecies = function (species) {
-  let resultArray = [];
+  const resultArray = [];
   for (dino of this.dinoCollection) {
     if (dino.species === species) {
       resultArray.push(dino);
@@ -70,7 +90,7 @@ Park.prototype.removeDinoBySpecies = function (species) {
 }
 
 Park.prototype.findDinoByDiet = function (diet) {
-  let resultArray = [];
+  const resultArray = [];
   for (dino of this.dinoCollection) {
     if (dino.diet === diet) {
       resultArray.push(dino);
@@ -80,7 +100,7 @@ Park.prototype.findDinoByDiet = function (diet) {
 }
 
 Park.prototype.findDiets = function () {
-  let resultArray = [];
+  const resultArray = [];
   for (dino of this.dinoCollection) {
     resultArray.push(dino.diet);
   }
@@ -88,7 +108,7 @@ Park.prototype.findDiets = function () {
 }
 
 Park.prototype.dietDataObject = function () {
-  let dietDataObject = {};
+  const dietDataObject = {};
   for (diet of this.findDiets()) {
     dietDataObject[diet] = this.findDinoByDiet(diet).length;
   }
