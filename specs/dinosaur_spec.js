@@ -24,4 +24,4 @@ describe('Dinosaur', function() {
     assert.strictEqual(actual, 50);
   });
 
-});
+})

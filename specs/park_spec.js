@@ -17,7 +17,7 @@ describe('Park', function() {
     dino4 = new Dinosaur('T-Rex', 'carnivore', 75);
     park = new Park('Jurassic Park', 15.00);
     park.dinoCollection = [dino1, dino2];
-  })
+  });
 
   it('should have a name', function () {
     assert.equal(park.name, 'Jurassic Park');
